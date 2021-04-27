@@ -147,8 +147,8 @@ public class JobData {
 
             // Open the CSV file and set up pull out column header info and records
             Resource resource = new ClassPathResource(DATA_FILE); //sets the var resource to be the file at path DATA_FILE which is resources/job_data.csv
-            InputStream is = resource.getInputStream(); //so this reads in the data from the file into is
-            Reader reader = new InputStreamReader(is); //this takes that input stream, which is raw data probably, and turns it into something that can "read" the data
+            InputStream is = resource.getInputStream(); //so this reads in the data from the file into is (as raw binary, when this is called it literally streams the input into the var.)
+            Reader reader = new InputStreamReader(is); //this takes that input stream, which is raw data probably, and turns it into something that can "read" the data by instantiating a new InputStreamReader with is as the constructor param
             CSVParser parser = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(reader); //then passes reader into the parser which calls the method .RFC4180
             // on CSVFormat class (which must therefore be a static method.)and then chains the method to take the first record as the header
             // .parse finishes it off and takes the reader as an input.
@@ -166,7 +166,7 @@ public class JobData {
                 String aLocation = record.get(2);
                 String aPosition = record.get(3);
                 String aSkill = record.get(4);
-
+                //not sure what this section is doing tbh. Casting? Does this check if the record is already in allEmployers etc?
                 Employer newEmployer = (Employer) findExistingObject(allEmployers, anEmployer);
                 Location newLocation = (Location) findExistingObject(allLocations, aLocation);
                 PositionType newPosition = (PositionType) findExistingObject(allPositionTypes, aPosition);
