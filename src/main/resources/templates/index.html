@@ -11,6 +11,7 @@
             <ul>
                 <li th:each="action : ${actions}">
                     <a th:href="@{'/' + ${action.key}}" th:text="${action.value}"></a>
+                    <!-- so @{'/' + action.key} returns /whatever -->
                 </li>
             </ul>
         </div>
