@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class ListController {
 
     static HashMap<String, String> columnChoices = new HashMap<>();
-    static HashMap<String, Object> tableChoices = new HashMap<>();
+    static HashMap<String, Object> tableChoices = new HashMap<>(); //should object here not be a more specific type? nm it can't be b/c it's getting objects of different types.
 
     public ListController () {
         columnChoices.put("all", "All");

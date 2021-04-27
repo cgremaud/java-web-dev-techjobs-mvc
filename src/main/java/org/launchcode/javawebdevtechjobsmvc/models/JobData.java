@@ -146,13 +146,15 @@ public class JobData {
         try {
 
             // Open the CSV file and set up pull out column header info and records
-            Resource resource = new ClassPathResource(DATA_FILE);
-            InputStream is = resource.getInputStream();
-            Reader reader = new InputStreamReader(is);
-            CSVParser parser = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(reader);
-            List<CSVRecord> records = parser.getRecords();
-            Integer numberOfColumns = records.get(0).size();
-            String[] headers = parser.getHeaderMap().keySet().toArray(new String[numberOfColumns]);
+            Resource resource = new ClassPathResource(DATA_FILE); //sets the var resource to be the file at path DATA_FILE which is resources/job_data.csv
+            InputStream is = resource.getInputStream(); //so this reads in the data from the file into is
+            Reader reader = new InputStreamReader(is); //this takes that input stream, which is raw data probably, and turns it into something that can "read" the data
+            CSVParser parser = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(reader); //then passes reader into the parser which calls the method .RFC4180
+            // on CSVFormat class (which must therefore be a static method.)and then chains the method to take the first record as the header
+            // .parse finishes it off and takes the reader as an input.
+            List<CSVRecord> records = parser.getRecords(); //this takes the parsed data and puts it into an List of type CSVRecord
+            Integer numberOfColumns = records.get(0).size(); //sets the number of columns from the size of the first record (see line 151 .withFirstRecordAsHeader
+            String[] headers = parser.getHeaderMap().keySet().toArray(new String[numberOfColumns]); //takes the first record and stores it as a string[] called headers.
 
             allJobs = new ArrayList<>();
 
