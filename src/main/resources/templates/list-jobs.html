@@ -12,7 +12,8 @@
 
     <!-- TODO #1 - Use a loop to display job results in a table. -->
     <table>
-        <tr th:each = "item : ${jobs}" th:text = "${item.toString()}">
+        <tr th:each = "item : ${jobs}">
+            <td  th:text = "${item.toString()}"></td>
 
         </tr>
     </table>
