@@ -10,10 +10,10 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <!-- TODO #1 - Use a loop to display job results in a table. -->
-    <table>
+    <!-- TODO #1 - Use a loop to display job results in a table. Need to fix table formatting to match instructions. -->
+    <table class = "job-listing">
         <tr th:each = "item : ${jobs}">
-            <td  th:text = "${item.toString()}"></td>
+            <td  th:text = "${item.toString()}"></td> <!-- This seems like it should be working b/c the toString method formats it on newlines, but the output is not formatted with each item on a line-->
 
         </tr>
     </table>
