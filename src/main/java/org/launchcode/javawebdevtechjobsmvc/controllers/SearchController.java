@@ -29,7 +29,7 @@ public class SearchController {
     public String displaySearchResults(@RequestParam String searchType, @RequestParam String searchTerm, Model model) {
          ArrayList<Job> jobs = JobData.findByColumnAndValue(searchType, searchTerm);
          model.addAttribute("jobs", jobs);
-         model.addAttribute("title", "Search Results");
+         model.addAttribute("title", "Search Results for search term " + searchTerm + " in category " + columnChoices.get(searchType));
          return "search-results";
 
 
