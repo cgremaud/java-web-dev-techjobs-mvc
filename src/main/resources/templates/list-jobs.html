@@ -10,11 +10,27 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <!-- TODO #1 - Use a loop to display job results in a table. Need to fix table formatting to match instructions. -->
-    <table class = "job-listing">
-        <tr th:each = "item : ${jobs}">
-            <td  th:text = "${item.toString()}"></td> <!-- This seems like it should be working b/c the toString method formats it on newlines, but the output is not formatted with each item on a line-->
-
+    <!-- TODO #1 - Use a loop to display job results in a table. This works but seems wet. -->
+    <table class = "job-listing" th:each = "item : ${jobs}">
+        <tr >
+            <td>ID: </td>
+            <td  th:text = "${item.getId()}"></td>
+        </tr>
+        <tr >
+            <td>Name: </td>
+            <td  th:text = "${item.getName()}"></td>
+        </tr>
+        <tr >
+            <td>Employer: </td>
+            <td  th:text = "${item.getEmployer()}"></td>
+        </tr>
+        <tr >
+            <td>Location: </td>
+            <td  th:text = "${item.getLocation()}"></td>
+        </tr>
+        <tr >
+            <td>Position Type: </td>
+            <td  th:text = "${item.getPositionType()}"></td>
         </tr>
     </table>
 
